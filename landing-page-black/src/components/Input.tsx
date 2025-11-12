@@ -17,7 +17,7 @@ function Input({ placeholder }: InputProps) {
       placeholder={placeholder}
       value={email}
       onChange={handleChange}
-      className="font-['Inter'] mt-[0.68rem] placeholder:text-[#AFA9A9] w-[32.25rem] py-[0.9rem] px-[1.4rem] bg-[#FFFFFF] text-[#AFA9A9] rounded-[0.5rem] border border-[#DDC07F] focus:outline-none focus:ring-1 focus:ring-[#DDC07F]"
+      className="font-['Inter'] mt-[0.68rem] placeholder:text-[#AFA9A9] w-[33.25rem] py-[0.9rem] px-[1.4rem] bg-[#FFFFFF] text-[#AFA9A9] rounded-[0.5rem] border border-[#DDC07F] focus:outline-none focus:ring-1 focus:ring-[#DDC07F]"
     />
   );
 }

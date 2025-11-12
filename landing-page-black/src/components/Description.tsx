@@ -1,5 +1,7 @@
 // O 'type' permanece o mesmo, já que a descrição não é uma prop
 import Input from "./Input";
+import PhoneCountryInput from "./PhoneCountryInput";
+import Button from "./Button";
 type DescriptionProps = {
   title: string;
   label: string;
@@ -49,8 +51,10 @@ function Description({ label, title }: DescriptionProps) {
           O conteúdo será liberado apenas no Grupo VIP da Black.
         </strong>
       </div>
-
-      <Input placeholder="Digite seu email" />
+      <div className="pt-[1.75rem] max-w-[33.25rem] flex flex-col">
+        <Input placeholder="Digite seu email" />
+        <PhoneCountryInput />
+      </div>
     </div>
   );
 }

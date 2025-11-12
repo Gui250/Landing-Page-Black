@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+/* Estilos customizados para o PhoneInput */
+
+.PhoneInputCountry {
+  margin-top: 1rem;
+  background-color: #bfbfbf;
+  padding-inline: 1.4rem !important;
+  border-radius: 0.5rem;
+}
+
+.PhoneInputInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  color: #878383;
+  margin-top: 1rem;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #ddc07f;
+  width: 32.25rem;
+  padding-inline: 1.4rem !important;
+  padding-block: 0.9rem !important;
+}
