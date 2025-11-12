@@ -2,6 +2,7 @@
 import Input from "./Input";
 import PhoneCountryInput from "./PhoneCountryInput";
 import Button from "./Button";
+import VSL from "./VSL";
 import womanImage from "../assets/imagem mulher.png";
 type DescriptionProps = {
   title: string;
@@ -28,8 +29,8 @@ function Description({ label, title }: DescriptionProps) {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">{title}</h1>
       </div>
 
-      {/* 3. Container para o vídeo VSL (quadrado verde) */}
-      <div className="pt-2 sm:pt-6 md:pt-[1.75rem] w-full max-w-[33.25rem]">
+      {/* 3. Container para o vídeo VSL (quadrado verde) - apenas mobile */}
+      <div className="pt-2 sm:hidden w-full max-w-[33.25rem]">
         <div className="w-full aspect-video bg-[#00FF00] rounded-lg flex items-center justify-center">
           {/* Placeholder para o vídeo VSL */}
           <span className="text-white text-sm opacity-50">Vídeo VSL</span>
@@ -72,11 +73,22 @@ function Description({ label, title }: DescriptionProps) {
           O conteúdo será liberado apenas no Grupo VIP da Black.
         </strong>
       </div>
-      {/* 5. Formulário para Grupo VIP */}
-      <div className="pt-2 sm:pt-6 md:pt-[1.75rem] max-w-[33.25rem] flex flex-col">
-        <Input placeholder="Digite seu email" />
-        <PhoneCountryInput />
-        <Button label="Entrar no grupo VIP" />
+      {/* 5. Formulário para Grupo VIP com VSL ao lado no desktop */}
+      <div className="pt-2 sm:pt-6 md:pt-[1.75rem] max-w-[33.25rem] sm:max-w-none">
+        <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-6 md:gap-8 lg:gap-[10.56rem]">
+          {/* Inputs - responsivo */}
+          <div className="col-span-1 sm:col-span-4 lg:col-start-1 lg:col-end-5 order-2 sm:order-1">
+            <div className="flex flex-col sm:max-w-[40rem]">
+              <Input placeholder="Digite seu email" />
+              <PhoneCountryInput />
+              <Button label="Entrar no grupo VIP" />
+            </div>
+          </div>
+          {/* VSL - responsivo, ajusta tamanho mas só muda posição no mobile */}
+          <div className="col-span-1 sm:col-span-2 lg:col-start-6 lg:col-end-9 w-full order-1 sm:order-2">
+            <VSL />
+          </div>
+        </div>
       </div>
     </div>
   );

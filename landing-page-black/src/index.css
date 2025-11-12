@@ -15,6 +15,10 @@
   }
 }
 
+.PhoneInput {
+  width: 100% !important;
+}
+
 .PhoneInputInput {
   display: flex;
   align-items: center;
@@ -25,8 +29,7 @@
   background-color: #ffffff;
   border-radius: 0.5rem;
   border: 1px solid #ddc07f;
-  width: 100%;
-  max-width: 32.25rem;
+  width: 100% !important;
   padding-inline: 1.4rem !important;
   padding-block: 0.9rem !important;
 }
