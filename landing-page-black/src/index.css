@@ -5,8 +5,14 @@
 .PhoneInputCountry {
   margin-top: 1rem;
   background-color: #bfbfbf;
-  padding-inline: 1.4rem !important;
+  padding-inline: 0.8rem !important;
   border-radius: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .PhoneInputCountry {
+    padding-inline: 1.4rem !important;
+  }
 }
 
 .PhoneInputInput {
@@ -16,11 +22,11 @@
   font-family: "Inter", sans-serif;
   color: #878383;
   margin-top: 1rem;
-  display: flex;
   background-color: #ffffff;
   border-radius: 0.5rem;
   border: 1px solid #ddc07f;
-  width: 32.25rem;
+  width: 100%;
+  max-width: 32.25rem;
   padding-inline: 1.4rem !important;
   padding-block: 0.9rem !important;
 }
