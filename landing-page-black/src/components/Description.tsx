@@ -85,10 +85,12 @@ function Description({ label, title }: DescriptionProps) {
         */}
         <p className="text-base sm:text-lg md:text-xl w-full font-['Poppins']">
           A procrastinação{" "}
-          <strong className="text-[#DDC07F]">não é um defeito seu. </strong> Ela{" "}
+          <strong className="text-[#DDC07F]">não é um defeito seu. </strong>
+          <br /> Ela{" "}
           <strong className="text-[#DDC07F]">é um mecanismo automático </strong>
           do seu cérebro <br className="hidden sm:block" /> para aliviar
-          ansiedade, medo, insegurança ou sensação de sobrecarga.
+          ansiedade, medo, insegurança ou
+          <br /> sensação de sobrecarga.
         </p>
       </div>
 
@@ -102,9 +104,10 @@ function Description({ label, title }: DescriptionProps) {
           Ele pode aprender a agir.
         </p>
         <p className="font-['Poppins'] text-sm sm:text-[0.9rem] text-[#FFFFFF] mt-2 sm:mt-[0.5rem]">
-          No dia 28, eu vou abrir a Semana Vencendo a Procrastinação, onde vou
-          te mostrar como reprogramar sua mente para agir, mesmo quando estiver
-          cansada, desmotivada, ansiosa ou com medo.
+          No dia 28, eu vou abrir a Semana Vencendo a Procrastinação, onde
+          <br /> vou te mostrar como reprogramar sua mente para agir, mesmo
+          <br />
+          quando estiver cansada, desmotivada, ansiosa ou com medo.
         </p>
         <strong className="font-['Poppins'] text-sm sm:text-[0.9rem] text-[#DDC07F] mt-2 sm:mt-[0.5rem]">
           O conteúdo será liberado apenas no Grupo VIP da Black.
