@@ -4,14 +4,51 @@ import PhoneCountryInput from "./PhoneCountryInput";
 import Button from "./Button";
 import VSL from "./VSL";
 import womanImage from "../assets/imagem mulher.png";
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+
+const formSchema = z.object({
+  email: z.string().email(),
+  phone: z.string().min(10),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
 type DescriptionProps = {
   title: string;
   label: string;
 };
 
 function Description({ label, title }: DescriptionProps) {
-  // 1. Trocamos o Fragment '<>' por uma 'div' principal.
-  // 2. Movemos os estilos que se repetiam (pl, cor, fonte) para ela.
+  const { register, handleSubmit, control } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const submit = async (data: FormData) => {
+    const webhookUrl = "/api/webhook/grupo-vip";
+
+    const payload = {
+      email: data.email,
+      phone: data.phone,
+    };
+
+    try {
+      const response = await axios.post(webhookUrl, payload);
+      if (response.status === 200) {
+        console.log("Dados enviados com sucesso para o webhook");
+      } else {
+        console.error(
+          "Erro ao enviar dados para o webhook:",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Erro ao enviar dados para o webhook:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col px-4 sm:px-8 md:pl-[7.125rem] text-[#FFFFFF] font-['Poppins'] pb-8">
       {/* 1. Imagem da mulher no topo - apenas no mobile */}
@@ -78,11 +115,25 @@ function Description({ label, title }: DescriptionProps) {
         <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-6 md:gap-8 lg:gap-[10.56rem]">
           {/* Inputs - responsivo */}
           <div className="col-span-1 sm:col-span-4 lg:col-start-1 lg:col-end-5">
-            <div className="flex flex-col sm:max-w-[40rem]">
-              <Input placeholder="Digite seu email" />
-              <PhoneCountryInput />
+            <form
+              onSubmit={handleSubmit(submit)}
+              className="flex flex-col sm:max-w-[40rem]"
+            >
+              <Input placeholder="Digite seu email" {...register("email")} />
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <PhoneCountryInput
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    name={field.name}
+                  />
+                )}
+              />
               <Button label="Entrar no grupo VIP" />
-            </div>
+            </form>
           </div>
           {/* VSL - responsivo, aparece apenas no tablet e desktop */}
           <div className="hidden sm:block sm:col-span-2 lg:col-start-6 lg:col-end-9 w-full">
