@@ -77,15 +77,15 @@ function Description({ label, title }: DescriptionProps) {
       <div className="pt-2 sm:pt-6 md:pt-[1.75rem] max-w-[33.25rem] sm:max-w-none">
         <div className="grid grid-cols-1 sm:grid-cols-6 lg:grid-cols-8 gap-4 sm:gap-6 md:gap-8 lg:gap-[10.56rem]">
           {/* Inputs - responsivo */}
-          <div className="col-span-1 sm:col-span-4 lg:col-start-1 lg:col-end-5 order-2 sm:order-1">
+          <div className="col-span-1 sm:col-span-4 lg:col-start-1 lg:col-end-5">
             <div className="flex flex-col sm:max-w-[40rem]">
               <Input placeholder="Digite seu email" />
               <PhoneCountryInput />
               <Button label="Entrar no grupo VIP" />
             </div>
           </div>
-          {/* VSL - responsivo, ajusta tamanho mas só muda posição no mobile */}
-          <div className="col-span-1 sm:col-span-2 lg:col-start-6 lg:col-end-9 w-full order-1 sm:order-2">
+          {/* VSL - responsivo, aparece apenas no tablet e desktop */}
+          <div className="hidden sm:block sm:col-span-2 lg:col-start-6 lg:col-end-9 w-full">
             <VSL />
           </div>
         </div>
