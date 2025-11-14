@@ -22,7 +22,7 @@ type DescriptionProps = {
 };
 
 function Description({ label, title }: DescriptionProps) {
-  const { register, handleSubmit, control } = useForm<FormData>({
+  const { register, handleSubmit, control, reset } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
@@ -38,6 +38,7 @@ function Description({ label, title }: DescriptionProps) {
       const response = await axios.post(webhookUrl, payload);
       if (response.status === 200) {
         console.log("Dados enviados com sucesso para o webhook");
+        reset(); // Limpa os campos do formulário após envio bem-sucedido
       } else {
         console.error(
           "Erro ao enviar dados para o webhook:",

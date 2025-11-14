@@ -525,6 +525,10 @@ body > div,
   }
 }
 
+.PhoneInputCountrySelect {
+  color: #000000;
+}
+
 .PhoneInput {
   width: 100% !important;
   max-width: 100% !important;

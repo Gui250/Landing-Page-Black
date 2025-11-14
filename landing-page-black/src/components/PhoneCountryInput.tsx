@@ -14,16 +14,20 @@ function PhoneCountryInput({
   name,
   onBlur,
 }: PhoneCountryInputProps) {
+  const hasValue = value && value.trim() !== "";
+
   return (
     <div className="w-full">
       <PhoneInput
         value={value}
         defaultCountry="BR"
-        onChange={onChange}
+        onChange={(value) => onChange?.(value?.toString())}
         onBlur={onBlur}
         name={name}
         placeholder="Digite seu telefone"
-        inputClass="font-['Inter'] text-[#AFA9A9] rounded-[0.5rem] w-full focus:outline-none focus:ring-1 focus:ring-[#DDC07F]"
+        inputClass={`font-['Inter'] rounded-[0.5rem] w-full focus:outline-none focus:ring-1 focus:ring-[#DDC07F] ${
+          hasValue ? "text-black" : "text-[#AFA9A9]"
+        }`}
       />
     </div>
   );
