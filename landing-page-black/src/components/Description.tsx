@@ -78,7 +78,7 @@ function Description({ label, title }: DescriptionProps) {
         <img
           src={womanImage}
           alt="Mulher"
-          className="w-full max-w-lg object-cover h-[20rem]"
+          className="w-full max-w-xs object-contain h-[20rem]"
         />
       </div>
 
