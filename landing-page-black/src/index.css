@@ -551,3 +551,82 @@ body > div,
   padding-inline: 1.4rem !important;
   padding-block: 0.9rem !important;
 }
+
+/* Proteção contra tradutor automático - preserva formatação */
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+.goog-te-ftab,
+.goog-te-gadget,
+.goog-te-gadget-simple,
+.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+  position: relative !important;
+}
+
+/* Proteção para elementos traduzidos pelo Google Translate */
+[class*="goog-"],
+[class*="notranslate"] {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Garantir que elementos com translate="no" mantenham formatação */
+[translate="no"],
+[translate="no"] * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+}
+
+/* Proteção específica para elementos que podem ser modificados pelo tradutor */
+.font-\\[\\'Poppins\\'\\],
+[class*="font-['Poppins']"] {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Garantir que quebras de linha não sejam afetadas pelo tradutor */
+br {
+  display: block !important;
+  content: "" !important;
+  margin: 0 !important;
+  line-height: inherit !important;
+}
+
+/* Proteção para elementos strong com cores específicas */
+strong.text-\\[\\#DDC07F\\],
+strong[class*="text-[#DDC07F]"] {
+  color: #DDC07F !important;
+}
+
+/* Proteção para manter classes Tailwind mesmo após tradução */
+[translate="no"] [class*="flex"],
+[translate="no"] [class*="grid"],
+[translate="no"] [class*="px-"],
+[translate="no"] [class*="py-"],
+[translate="no"] [class*="pt-"],
+[translate="no"] [class*="pb-"],
+[translate="no"] [class*="pl-"],
+[translate="no"] [class*="pr-"],
+[translate="no"] [class*="max-w-"],
+[translate="no"] [class*="w-"],
+[translate="no"] [class*="text-"],
+[translate="no"] [class*="bg-"] {
+  /* Mantém todas as classes Tailwind funcionando */
+}
+
+/* Proteção adicional para evitar que o tradutor quebre o layout */
+html[lang] body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Garantir que o tradutor não adicione elementos que quebrem o layout */
+.goog-te-spinner-pos,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}

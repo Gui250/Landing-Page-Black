@@ -72,28 +72,27 @@ function Description({ label, title }: DescriptionProps) {
   };
 
   return (
-    <div className="flex flex-col px-4 sm:px-8 md:pl-[7.125rem] text-[#FFFFFF] font-['Poppins'] pb-8">
-      {/* 1. Imagem da mulher no topo - apenas no mobile */}
-      <div className="flex justify-center sm:hidden pt-0 pb-2">
+    <div
+      className="flex flex-col px-4 sm:px-8 md:pl-[7.125rem] text-[#FFFFFF] font-['Poppins'] pb-8"
+      translate="no"
+    >
+      {/* 1. Imagem da mulher no topo com VSL sobreposto - apenas no mobile */}
+      <div className="relative flex justify-center sm:hidden pt-0 pb-16">
         <img
           src={womanImage}
           alt="Mulher"
-          className="w-full max-w-xs object-contain h-[20rem]"
+          className="mt-[1.5rem] w-full max-w-xs object-contain h-[25rem]"
         />
+        {/* VSL sobreposto à imagem no mobile */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[85%] max-w-xs aspect-video">
+          <VSL />
+        </div>
       </div>
 
       {/* 2. Bloco de Título - Black Vencendo a Procrastinação */}
-      <div className="pt-2 sm:pt-24 md:pt-[7.5rem]">
+      <div className="pt-2 sm:pt-24 md:pt-[7.5rem] text-center sm:text-left">
         <p className="text-base sm:text-lg md:text-xl font-bold">{label}</p>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">{title}</h1>
-      </div>
-
-      {/* 3. Container para o vídeo VSL (quadrado verde) - apenas mobile */}
-      <div className="pt-2 sm:hidden w-full max-w-[33.25rem]">
-        <div className="w-full aspect-video bg-[#00FF00] rounded-lg flex items-center justify-center">
-          {/* Placeholder para o vídeo VSL */}
-          <span className="text-white text-sm opacity-50">Vídeo VSL</span>
-        </div>
       </div>
 
       {/* 4. Bloco de Descrição */}
@@ -105,7 +104,7 @@ function Description({ label, title }: DescriptionProps) {
         {/* 5. Limpamos as classes desnecessárias (como m-0, p-0, box-border, etc)
              que o 'w-full' já resolve.
         */}
-        <p className="text-base sm:text-lg md:text-xl w-full font-['Poppins']">
+        <p className="text-base sm:text-lg md:text-xl w-full font-['Poppins'] text-center sm:text-left">
           A procrastinação{" "}
           <strong className="text-[#DDC07F]">não é um defeito seu. </strong>
           <br /> Ela{" "}
@@ -116,7 +115,7 @@ function Description({ label, title }: DescriptionProps) {
         </p>
       </div>
 
-      <div className="pt-2 sm:pt-6 md:pt-[1.75rem] max-w-[33.25rem] flex flex-col ">
+      <div className="pt-2 sm:pt-6 md:pt-[1.75rem] max-w-[33.25rem] flex flex-col text-center sm:text-left">
         <strong className="text-[#DDC07F] text-base sm:text-lg md:text-xl">
           Mas a boa notícia:
         </strong>

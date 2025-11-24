@@ -8,6 +8,7 @@ function Button({ label, disabled = false }: ButtonProps) {
     <button
       type="submit"
       disabled={disabled}
+      translate="no"
       className={`transition-all duration-300 mt-[1rem] rounded-[0.5rem] p-3 sm:p-4 md:p-[1rem] w-full sm:w-auto text-sm sm:text-base ${
         disabled
           ? "bg-[#808080] text-[#FFFFFF] cursor-not-allowed opacity-60"

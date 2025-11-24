@@ -12,6 +12,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         type="text"
         placeholder={placeholder}
         {...props}
+        translate="no"
         className="font-['Inter'] mt-[0.68rem] placeholder:text-[#AFA9A9] w-full py-[0.9rem] px-[1.4rem] bg-[#FFFFFF] text-[#AFA9A9] rounded-[0.5rem] border border-[#DDC07F] focus:outline-none focus:ring-1 focus:ring-[#DDC07F]"
       />
     );

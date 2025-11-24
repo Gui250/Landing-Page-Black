@@ -17,7 +17,7 @@ function PhoneCountryInput({
   const hasValue = value && value.trim() !== "";
 
   return (
-    <div className="w-full">
+    <div className="w-full" translate="no">
       <PhoneInput
         value={value}
         defaultCountry="BR"

@@ -7,6 +7,7 @@ function App() {
       style={{
         backgroundPosition: "center top",
       }}
+      translate="no"
     >
       <Description label="Black" title="Vencendo a Procrastinação" />
     </div>
