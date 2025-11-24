@@ -58,8 +58,6 @@ function Description({ label, title }: DescriptionProps) {
       if (response.status === 200) {
         console.log("Dados enviados com sucesso para o webhook");
         reset(); // Limpa os campos do formulário após envio bem-sucedido
-        // Redireciona para o grupo do WhatsApp
-        window.open(WHATSAPP_GROUP_LINK, "_blank");
       } else {
         console.error(
           "Erro ao enviar dados para o webhook:",
@@ -68,6 +66,9 @@ function Description({ label, title }: DescriptionProps) {
       }
     } catch (error) {
       console.error("Erro ao enviar dados para o webhook:", error);
+    } finally {
+      // Sempre redireciona para o grupo do WhatsApp, independente do resultado do webhook
+      window.location.href = WHATSAPP_GROUP_LINK;
     }
   };
 
