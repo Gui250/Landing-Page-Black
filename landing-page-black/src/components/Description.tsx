@@ -8,6 +8,9 @@ import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { trackEvent } from "../lib/metaPixel.ts";
+
+const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/HYgJJu82oWO1yVxX6JDz1T";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -22,9 +25,19 @@ type DescriptionProps = {
 };
 
 function Description({ label, title }: DescriptionProps) {
-  const { register, handleSubmit, control, reset } = useForm<FormData>({
+  const { register, handleSubmit, control, reset, watch } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
+
+  const email = watch("email");
+  const phone = watch("phone");
+
+  // Verifica se ambos os campos estão preenchidos e válidos
+  const isEmailValid = email && email.trim() !== "" && email.includes("@");
+  // Remove caracteres não numéricos para contar apenas dígitos
+  const phoneDigits = phone ? phone.replace(/\D/g, "") : "";
+  const isPhoneValid = phone && phone.trim() !== "" && phoneDigits.length >= 10;
+  const isFormValid = isEmailValid && isPhoneValid;
 
   const submit = async (data: FormData) => {
     const webhookUrl = "/api/webhook/grupo-vip";
@@ -34,11 +47,19 @@ function Description({ label, title }: DescriptionProps) {
       phone: data.phone,
     };
 
+    // Rastreia o evento no Meta Pixel
+    trackEvent("Entrar no grupo VIP", {
+      button_label: "Entrar no grupo VIP",
+      button_type: "primary",
+    });
+
     try {
       const response = await axios.post(webhookUrl, payload);
       if (response.status === 200) {
         console.log("Dados enviados com sucesso para o webhook");
         reset(); // Limpa os campos do formulário após envio bem-sucedido
+        // Redireciona para o grupo do WhatsApp
+        window.open(WHATSAPP_GROUP_LINK, "_blank");
       } else {
         console.error(
           "Erro ao enviar dados para o webhook:",
@@ -136,7 +157,7 @@ function Description({ label, title }: DescriptionProps) {
                   />
                 )}
               />
-              <Button label="Entrar no grupo VIP" />
+              <Button label="Entrar no grupo VIP" disabled={!isFormValid} />
             </form>
           </div>
           {/* VSL - responsivo, aparece apenas no tablet e desktop */}
