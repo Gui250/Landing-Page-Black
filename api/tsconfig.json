@@ -1,7 +1,8 @@
 {
   "extends": "../backend/tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "verbatimModuleSyntax": false
   },
   "include": ["**/*.ts", "../backend/src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
