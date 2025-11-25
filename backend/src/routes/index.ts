@@ -2,5 +2,5 @@ import { Router } from "express";
 import googlesheetsRoutes from "./googlesheets.js";
 const routes = Router();
 
-routes.use("/googlesheets", googlesheetsRoutes);
+routes.use("/api/googlesheets", googlesheetsRoutes);
 export default routes;
