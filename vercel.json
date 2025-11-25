@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd backend && npm install && cd ../landing-page-black && npm install && npm run build",
-  "outputDirectory": "landing-page-black/dist",
   "installCommand": "npm install",
+  "buildCommand": "npm install --prefix ./backend && npm install --prefix ./landing-page-black && npm run build --prefix ./landing-page-black",
+  "outputDirectory": "landing-page-black/dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
