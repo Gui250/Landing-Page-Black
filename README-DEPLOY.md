@@ -62,10 +62,31 @@ vercel
 
 ## Variáveis de Ambiente
 
-Configure as seguintes variáveis no painel da Vercel (Settings > Environment Variables):
+⚠️ **IMPORTANTE:** Configure as variáveis de ambiente antes de fazer o deploy!
 
-- `FRONTEND_URL`: URL do frontend em produção (opcional, padrão: "\*")
-- Qualquer outra variável que o backend precise (ex: credenciais do Google Sheets)
+### Variáveis Obrigatórias:
+
+1. **`GOOGLE_CREDENTIALS`** (Obrigatória)
+   - Conteúdo completo do arquivo JSON de credenciais do Google Service Account
+   - Veja o guia completo em [GUIA-VARIAVEIS-AMBIENTE.md](./GUIA-VARIAVEIS-AMBIENTE.md)
+
+### Variáveis Opcionais:
+
+2. **`GOOGLE_SPREADSHEET_ID`** (Opcional)
+   - ID da planilha do Google Sheets
+   - Padrão: `1XpZ1LZG8AD14aT2F7KVdsOGrUU7gJ6iqaKpcL9FCGHg`
+
+3. **`FRONTEND_URL`** (Opcional)
+   - URL do frontend em produção para CORS
+   - Padrão: `*` (aceita qualquer origem)
+
+### Como Configurar:
+
+1. Acesse o painel da Vercel: **Settings** > **Environment Variables**
+2. Adicione `GOOGLE_CREDENTIALS` com o conteúdo completo do JSON de credenciais
+3. Faça um novo deploy para aplicar as variáveis
+
+📖 **Guia Completo:** Consulte [GUIA-VARIAVEIS-AMBIENTE.md](./GUIA-VARIAVEIS-AMBIENTE.md) para instruções detalhadas.
 
 ## Arquivos Importantes
 
@@ -84,8 +105,13 @@ Após o deploy, as rotas estarão disponíveis em:
 
 ## Notas Importantes
 
-1. **Credenciais do Google Sheets**: Certifique-se de adicionar o arquivo `credentials.json` no backend ou configurar as variáveis de ambiente necessárias.
+1. **Credenciais do Google Sheets**: 
+   - ⚠️ **OBRIGATÓRIO:** Configure a variável `GOOGLE_CREDENTIALS` na Vercel
+   - O código agora suporta variáveis de ambiente (produção) e arquivo `credentials.json` (desenvolvimento local)
+   - Veja [GUIA-VARIAVEIS-AMBIENTE.md](./GUIA-VARIAVEIS-AMBIENTE.md) para instruções completas
 
 2. **Build**: O build do frontend é executado automaticamente pela Vercel usando o comando definido em `vercel.json`.
 
 3. **CORS**: O CORS está configurado para aceitar requisições de qualquer origem em desenvolvimento. Em produção, configure `FRONTEND_URL` para maior segurança.
+
+4. **Deploy**: Após adicionar variáveis de ambiente, você **DEVE** fazer um novo deploy para que elas sejam aplicadas!
