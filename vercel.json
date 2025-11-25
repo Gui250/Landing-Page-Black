@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "bash -c 'ROOT=$(pwd); if [ ! -d backend ] && [ -d ../backend ]; then cd ..; ROOT=$(pwd); fi; cd $ROOT && npm install --prefix backend && npm install --prefix landing-page-black && npm run build --prefix landing-page-black && if [ ! -d landing-page-black/dist ]; then echo \"ERROR: dist directory not found at $ROOT/landing-page-black/dist\" && exit 1; fi'",
+  "buildCommand": "npm install --prefix backend && npm install --prefix landing-page-black && npm run build --prefix landing-page-black",
   "outputDirectory": "landing-page-black/dist",
   "rewrites": [
     {
