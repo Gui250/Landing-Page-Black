@@ -1,7 +1,7 @@
 {
   "version": 2,
   "installCommand": "npm install",
-  "buildCommand": "npm run vercel-build",
+  "buildCommand": "bash -c 'if [ ! -d backend ] && [ -d ../backend ]; then cd ..; fi; npm install --prefix backend && npm install --prefix landing-page-black && npm run build --prefix landing-page-black'",
   "outputDirectory": "landing-page-black/dist",
   "rewrites": [
     {
