@@ -54,20 +54,41 @@ function Description({ label, title }: DescriptionProps) {
     });
 
     try {
-      const response = await axios.post(backendUrl, payload);
-      if (response.status === 200) {
-        console.log("Dados enviados com sucesso para o Google Sheets");
+      // Faz a requisição para a API
+      const response = await axios.post(backendUrl, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        timeout: 10000, // 10 segundos de timeout
+      });
+
+      if (response.status === 200 || response.status === 201) {
+        console.log(
+          "✅ Dados enviados com sucesso para o Google Sheets:",
+          response.data
+        );
         reset(); // Limpa os campos do formulário após envio bem-sucedido
       } else {
         console.error(
-          "Erro ao enviar dados para o Google Sheets:",
+          "⚠️ Erro ao enviar dados para o Google Sheets:",
           response.statusText
         );
       }
     } catch (error) {
-      console.error("Erro ao enviar dados para o Google Sheets:", error);
+      // Log detalhado do erro para debug
+      if (axios.isAxiosError(error)) {
+        console.error("❌ Erro na requisição para a API:", {
+          message: error.message,
+          status: error.response?.status,
+          data: error.response?.data,
+          url: backendUrl,
+        });
+      } else {
+        console.error("❌ Erro desconhecido ao enviar dados:", error);
+      }
     } finally {
       // Sempre redireciona para o grupo do WhatsApp, independente do resultado
+      // Isso garante que o usuário seja redirecionado mesmo se houver erro na API
       window.location.href = WHATSAPP_GROUP_LINK;
     }
   };
