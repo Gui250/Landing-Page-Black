@@ -1,4 +1,4 @@
-import { google } from "../node_modules/googleapis/build/src/index";
+import { google } from "googleapis";
 import type { Request, Response } from "express";
 import path from "path";
 import { fileURLToPath } from "url";

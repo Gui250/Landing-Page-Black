@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { GetAuthGoogleSheets } from "../../controllers/GetAuthGoogleSheets";
+import { GetAuthGoogleSheets } from "../../controllers/GetAuthGoogleSheets.js";
 
 const router = Router();
 
