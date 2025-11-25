@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment and credentials
+credentials.json
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+

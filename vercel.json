@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "cd backend && npm install && cd ../landing-page-black && npm install && npm run build",
+  "outputDirectory": "landing-page-black/dist",
+  "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.ts"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
+

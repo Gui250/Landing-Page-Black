@@ -7,11 +7,18 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      // Qualquer requisição para /api será redirecionada
+      // Proxy para o backend local (apenas em desenvolvimento)
+      // Na Vercel, as requisições /api/* são automaticamente roteadas para serverless functions
+      "/api/googlesheets": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        rewrite: (path) =>
+          path.replace(/^\/api\/googlesheets/, "/googlesheets"),
+      },
+      // Qualquer outra requisição para /api será redirecionada para n8n (apenas em desenvolvimento)
       "/api": {
-        target: "https://n8n-n8n.4axq9y.easypanel.host", // O seu servidor n8n
-        changeOrigin: true, // Necessário para o proxy funcionar corretamente
-        // Reescreve a URL: remove /api antes de enviar
+        target: "https://n8n-n8n.4axq9y.easypanel.host",
+        changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },

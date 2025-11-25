@@ -40,7 +40,7 @@ function Description({ label, title }: DescriptionProps) {
   const isFormValid = isEmailValid && isPhoneValid;
 
   const submit = async (data: FormData) => {
-    const webhookUrl = "/api/webhook/grupo-vip";
+    const backendUrl = "/api/googlesheets/add-row";
 
     const payload = {
       email: data.email,
@@ -54,20 +54,20 @@ function Description({ label, title }: DescriptionProps) {
     });
 
     try {
-      const response = await axios.post(webhookUrl, payload);
+      const response = await axios.post(backendUrl, payload);
       if (response.status === 200) {
-        console.log("Dados enviados com sucesso para o webhook");
+        console.log("Dados enviados com sucesso para o Google Sheets");
         reset(); // Limpa os campos do formulário após envio bem-sucedido
       } else {
         console.error(
-          "Erro ao enviar dados para o webhook:",
+          "Erro ao enviar dados para o Google Sheets:",
           response.statusText
         );
       }
     } catch (error) {
-      console.error("Erro ao enviar dados para o webhook:", error);
+      console.error("Erro ao enviar dados para o Google Sheets:", error);
     } finally {
-      // Sempre redireciona para o grupo do WhatsApp, independente do resultado do webhook
+      // Sempre redireciona para o grupo do WhatsApp, independente do resultado
       window.location.href = WHATSAPP_GROUP_LINK;
     }
   };

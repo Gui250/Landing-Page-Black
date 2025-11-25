@@ -1,0 +1,22 @@
+{
+  "name": "landing-page-black-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo para Landing Page Black - Frontend (React/Vite) + Backend (Express)",
+  "scripts": {
+    "install:all": "npm install && cd landing-page-black && npm install && cd ../backend && npm install",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd landing-page-black && npm run build",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd landing-page-black && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
+
